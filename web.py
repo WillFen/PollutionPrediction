@@ -6,7 +6,7 @@ import pandas as pd
 
 # ==================== 1. 页面配置 ====================
 st.set_page_config(
-    page_title="Pollutant Treatment Prediction",
+    page_title="Pollutant Degradation-Persulfate Generation Prediction",
     page_icon="🧪",
     layout="wide"
 )
@@ -40,14 +40,14 @@ scaler_X, model_rate, model_eff, model_energy, model_yield = load_resources()
 
 # ==================== 3. 定义输入输出名称 ====================
 input_names_en = [
-    "Pollutant Concentration (mg/L)",
+    "Pollutant Concentration (μmol/L)",
     "Sulfate Concentration (mmol/L)",
-    "pH Value",
-    "Voltage (V vs. SCE)"
+    "Reaction pH Value",
+    "Applied Voltage (V vs. SCE)"
 ]
 
 output_names_en = [
-    "111Removal Rate (min⁻¹)",  # 对应 污染物去除速率
+    "Reaction Rate Constant (min⁻¹)",  # 对应 污染物去除速率
     "Degradation Efficiency (%)",  # 对应 污染物降解效率
     "Persulfate Yield Rate (µM cm⁻² h⁻¹)",  # 对应 过硫酸盐产率
     "Energy Consumption EE/O (kW·hm⁻³)"  # 对应 能耗
@@ -62,7 +62,7 @@ def user_input_features():
     input_1 = st.sidebar.number_input(f"{input_names_en[0]}", min_value=0.0, value=20.0, step=0.5)
     input_2 = st.sidebar.number_input(f"{input_names_en[1]}", min_value=0.0, value=50.0, step=0.1)
     input_3 = st.sidebar.slider(f"{input_names_en[2]}", min_value=1.0, max_value=12.0, value=7.0, step=0.1)
-    input_4 = st.sidebar.number_input(f"{input_names_en[3]}", min_value=0.0, value=1.5, step=0.1)
+    input_4 = st.sidebar.number_input(f"{input_names_en[3]}", min_value=0.0, value=3.0, step=0.1)
 
     return np.array([[input_1, input_2, input_3, input_4]])
 
