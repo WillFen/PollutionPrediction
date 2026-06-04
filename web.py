@@ -70,7 +70,7 @@ def user_input_features():
 input_data = user_input_features()
 
 # ==================== 5. 主页面 ====================
-st.title("Pollutant Degradation Prediction")
+st.title("Pollutant Degradation-Persulfate Generation Prediction")
 st.markdown("---")
 
 # 显示当前输入
